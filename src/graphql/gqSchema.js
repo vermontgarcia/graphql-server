@@ -24,7 +24,7 @@ const AuthorType = new GraphQLObjectType({
     age: {
       type: GraphQLInt,
     },
-    book: {
+    books: {
       type: new GraphQLList(BookType),
       resolve(parent, args) {
         return Book.find({ authorId: parent.id });
