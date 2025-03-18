@@ -1,0 +1,98 @@
+### Add Author
+POST http://localhost:8088/graphql HTTP/1.1
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+mutation($name: String!, $age: Int!) {
+  addAuthor(name: $name, age: $age){
+      name,
+      age
+    }
+}
+
+{
+  "name": "Gabriel Garcia Marquez",
+  "age": 87
+}
+
+### All Authors
+POST http://localhost:8088/graphql HTTP/1.1
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+query {
+  authors{
+    id
+    name
+    age
+  }
+}
+
+### Author by ID
+POST http://localhost:8088/graphql HTTP/1.1
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+query($id: ID!) {
+  author(id: $id){
+    id
+    name
+    age
+  }
+}
+
+{
+  "id": "67d9aabc8a0990ad853da0da"
+}
+
+### Add Book
+POST http://localhost:8088/graphql HTTP/1.1
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+mutation($name: String!, $pages: Int!, $authorId: ID!) {
+  addBook(name: $name, pages: $pages, authorId: $authorId){
+      name,
+      pages
+    }
+}
+
+{
+  "name": "Hamlet",
+  "pages": 330,
+  "authorId": "67d9aabc8a0990ad853da0da"
+}
+
+### All Books
+POST http://localhost:8088/graphql HTTP/1.1
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+query {
+  books{
+    id
+    name
+    pages
+    author {
+      id
+      name
+      age
+    }
+  }
+}
+
+### Book by ID
+POST http://localhost:8088/graphql HTTP/1.1
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+query($id: ID!) {
+  book(id: $id){
+    name
+    pages
+  }
+}
+
+{
+  "id": "67d9afae093cebf5f7249dfc"
+}
