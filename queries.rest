@@ -25,6 +25,10 @@ query {
     id
     name
     age
+    books{
+      id
+      name
+    }
   }
 }
 
@@ -88,6 +92,7 @@ X-Request-Type: GraphQL
 
 query($id: ID!) {
   book(id: $id){
+    id
     name
     pages
   }
